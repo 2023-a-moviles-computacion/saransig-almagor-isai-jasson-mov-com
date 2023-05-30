@@ -146,6 +146,23 @@ fun main(args: Array<String>) {
             return@all (valorActual>5)
         }
     println(respuestaAll) //false
+
+    //REDUCE -> Valor Acumulado
+    //Valor acumulado = 0  <- inicializa en 0
+    // [1,2,3,4,5] -> Sumeme todos los valores del arreglo
+    // valorIteracion1 = valorEmpieza + 1 =  0 + 1 = 1
+    // valorIteracion2 = valorIteracion1 + 2 =  1 + 2 = 3
+    // valorIteracion3 = valorIteracion2 + 3 =  3 + 3 = 6
+    // valorIteracion4 = valorIteracion3 + 4 =  6 + 4 = 10
+    // valorIteracion5 = valorIteracion4 + 5 =  10 + 5 = 15
+
+    val respuestaReduce: Int = arregloDinamico
+        .reduce{
+            acumulado: Int, valorActual: Int ->
+            return@reduce (acumulado + valorActual)
+        }
+
+    println(respuestaReduce)
 }
 
 
