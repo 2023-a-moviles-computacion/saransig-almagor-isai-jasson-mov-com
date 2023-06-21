@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a34f2db3-8128-4c4f-ad16-e0b81fd4a99b" name="Changes" comment="" />
+    <list default="true" id="a34f2db3-8128-4c4f-ad16-e0b81fd4a99b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../02-Android/app/src/main/java/com/example/movcomp2023a/ACicloVida.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../02-Android/app/src/main/res/layout/activity_aciclo_vida.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../02-Android/app/src/main/res/values-land/str_land_en.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../02-Android/app/src/main/res/values-land/str_land_es.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../02-Android/app/src/main/res/values-land/string.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../02-Android/app/src/main/res/values-port/port_EN.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../02-Android/app/src/main/res/values-port/port_es.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../MyApplication/app/src/main/res/values-land/string.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../MyApplication/app/src/main/res/values-port/string2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,7 +68,8 @@
       <option name="presentableId" value="Default" />
       <updated>1684766912040</updated>
       <workItem from="1684766913071" duration="3957000" />
-      <workItem from="1685370057890" duration="9725000" />
+      <workItem from="1685370057890" duration="11574000" />
+      <workItem from="1687116065343" duration="67000" />
     </task>
     <servers />
   </component>
