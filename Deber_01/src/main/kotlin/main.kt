@@ -15,6 +15,7 @@ fun main(){
     var opcion: String
     while(flag){
         println("------------------------------------")
+        println("Menú de TIENDAS")
         println("1. Añadir Tienda")
         println("2. Mostrar Tiendas")
         println("3. Actualizar Tienda")
@@ -46,6 +47,7 @@ fun menuProducto(crudProductos: CRUDProductos, idTienda: Int){
     var opcion: String
     while(flag){
         println("------------------------------------")
+        println("Menú de PRODUCTOS")
         println("1. Añadir Producto")
         println("2. Mostrar Productos")
         println("3. Actualizar Producto")
@@ -131,6 +133,7 @@ fun actualizarProducto(crudProductos: CRUDProductos) {
     var producto: Producto? = crudProductos.productoExiste(idProducto)
     if (producto != null) {
         println("------------------------------------")
+        println("Menú actualización PRODUCTOS")
         println("1. Actualizar Descripcion")
         println("2. Actualizar Fecha de Elaboracion")
         println("3. Actualizar Precio")
@@ -184,6 +187,7 @@ fun actualizarTienda(crudTiendas:CRUDTienda){
     var tienda:Tienda? = crudTiendas.tiendaExiste(idTienda)
     if(tienda!=null){
         println("------------------------------------")
+        println("Menú actualización TIENDAS")
         println("1. Actualizar Nombre")
         println("2. Actualizar Direccion")
         println("3. Actualizar Ciudad")
