@@ -1,17 +1,31 @@
-import java.util.Date
 import java.io.*
+import java.text.SimpleDateFormat
+import java.util.*
+
 fun main(){
+    val archivoT = File("tiendas.csv")
+    val crudTiendas = CRUDTienda(archivoT)
+    val archivoP = File("productos.csv")
+    val crudProductos = CRUDProductos(archivoP, 0)
+
     var flag = true
     var opcion: String
+    while(flag){
+        println("1. Tienda")
+        println("2. Productos")
+        println("0. Salir")
+        opcion = readln()
+        when(opcion) {
+            "1" ->  menuTienda(crudTiendas)
+            "2" ->  menuProducto(crudProductos)
+            "0" ->  flag = false
+            else -> println("Opción NO valida")
+        }
 
-    menuProducto()
-
+    }
 }
 
-fun menuTienda(){
-    val archivoT = File("tiendas.json")
-    val crudTiendas = CRUDTienda(archivoT)
-
+fun menuTienda(crudTiendas: CRUDTienda){
     var flag = true
     var opcion: String
     while(flag){
@@ -23,7 +37,7 @@ fun menuTienda(){
         opcion = readln()
         when(opcion){
             "1" -> añadirTienda(crudTiendas)
-            "2" -> mostrarTienda(crudTiendas)
+            "2" -> mostrarTiendas(crudTiendas)
             "3" -> actualizarTienda(crudTiendas)
             "4" -> eliminarTienda(crudTiendas)
             "0" -> flag = false
@@ -33,12 +47,7 @@ fun menuTienda(){
 
 }
 
-fun menuProducto(){
-
-    val archivoP = File("productos.json")
-    val crudProductos = CRUDProductos(archivoP)
-
-
+fun menuProducto(crudProductos: CRUDProductos){
     var flag = true
     var opcion: String
     while(flag){
@@ -59,6 +68,11 @@ fun menuProducto(){
     }
 }
 
+fun convertToDate(fechaStr: String):Date{
+    val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    val fecha = dateFormat.parse(fechaStr)
+    return fecha
+}
 fun crearProducto():Producto{
     println("Ingrese el ID del producto:")
     val idProducto = readLine()?.toIntOrNull() ?: 0
@@ -67,14 +81,15 @@ fun crearProducto():Producto{
     val descripcion = readLine() ?: ""
 
     println("Ingrese la fecha de elaboración del producto (formato yyyy-MM-dd):")
-    val fechaDeElaboracion = readLine() ?: ""
+    val fechaStr = readLine()?: ""
+    val fecha: Date = convertToDate(fechaStr)
 
     println("Ingrese el precio del producto:")
     val precio = readLine()?.toDoubleOrNull() ?: 0.0
 
     println("¿El producto tiene descuento? (true/false):")
     val vencido = readLine()?.toBoolean() ?: false
-    val producto = Producto(idProducto, descripcion, fechaDeElaboracion, precio, vencido)
+    val producto = Producto(idProducto, descripcion, fecha, precio, vencido)
     return producto
 }
 
@@ -102,7 +117,6 @@ fun crearTienda():Tienda{
 fun añadirProducto(crudProductos: CRUDProductos){
     val producto = crearProducto()
     crudProductos.crearProducto(producto)
-
 }
 
 fun eliminarProducto(crudProductos: CRUDProductos){
@@ -125,17 +139,57 @@ fun actualizarProducto(crudProductos: CRUDProductos){
 
 fun añadirTienda(crudTiendas:CRUDTienda){
     val tienda = crearTienda()
-    crudTiendas.crearTiend(tienda)
+    crudTiendas.crearTienda(tienda)
 }
 
-fun mostrarTienda(crudTiendas:CRUDTienda){
+fun mostrarTiendas(crudTiendas:CRUDTienda){
     crudTiendas.mostrarTiendas()
 }
 
 fun actualizarTienda(crudTiendas:CRUDTienda){
+    println("Ingrese el ID de la Tienda que quiere modificar")
+    var idTienda = readln()?.toInt()
+    var tienda:Tienda? = crudTiendas.tiendaExiste(idTienda)
+    if(tienda!=null){
+        println("1. Actualizar Nombre")
+        println("2. Actualizar Direccion")
+        println("3. Actualizar Ciudad")
+        println("4. Actualizar Numero de Empleados")
+        var opc = readln()
+        var newItem:String
+        when(opc){
+            "1" -> {
+                println("Ingrese el nuevo nombre de la Tienda")
+                newItem = readln()
+                crudTiendas.actualizarNombre(tienda,newItem)
+            }
+            "2" -> {
+                println("Ingrese el nuevo direccion de la Tienda")
+                newItem = readln()
+                crudTiendas.actualizarDir(tienda,newItem)
+            }
+            "3" -> {
+                println("Ingrese el nuevo ciudad de la Tienda")
+                newItem = readln()
+                crudTiendas.actualizarCiudad(tienda,newItem)
+            }
+            "4" -> {
+                println("Ingrese el nuevo Numero de Empleados de la Tienda")
+                newItem = readln()
+                crudTiendas.actualizarNumEmp(tienda,newItem.toInt())
+            }
+            else -> println("Opción NO valida")
+
+        }
+
+    }
+
 
 }
 
 fun eliminarTienda(crudTiendas:CRUDTienda){
-
+    println("Ingrese el ID de la Tienda que quiere eliminar:")
+    val idTienda = readLine()?.toIntOrNull() ?: 0
+    val tienda: Tienda? = crudTiendas.tiendaExiste(idTienda)
+    crudTiendas.eliminarTienda(tienda)
 }

@@ -1,12 +1,13 @@
 import java.io.*
+import java.text.SimpleDateFormat
 import java.util.*
 
-class CRUDProductos( val archivo: File) {
+class CRUDProductos( val archivo: File, id: Int) {
 
     private var productos: MutableList<Producto> = mutableListOf()
 
     init {
-        cargarProductos()
+        cargarProductos(id)
     }
 
     fun crearProducto(producto: Producto) {
@@ -36,6 +37,31 @@ class CRUDProductos( val archivo: File) {
         }
     }
 
+    fun productoExiste(id: Int):Producto?{
+        val productoExistente = productos.find { it.idProducto == id }
+        return productoExistente
+    }
+
+    fun actualizaDescp(producto: Producto, newDesc: String){
+        producto.descripcion = newDesc
+        guardarProductos()
+    }
+
+    fun actualizarFec(producto: Producto, newFecha: Date){
+        producto.fechaDeElaboracion = newFecha
+        guardarProductos()
+    }
+
+    fun actualizarPrecio(producto: Producto, newPrecio:Double){
+        producto.precio = newPrecio
+        guardarProductos()
+    }
+
+    fun actualizarDescuento(producto: Producto, newDescuento: Boolean){
+        producto.descuento = newDescuento
+        guardarProductos()
+    }
+
     fun eliminarProducto(id: Int) {
         val productoExistente = productos.find { it.idProducto == id }
         if (productoExistente != null) {
@@ -46,7 +72,13 @@ class CRUDProductos( val archivo: File) {
             println("No se encontró ningún producto con el ID proporcionado.")
         }
     }
-    private fun cargarProductos() {
+
+    fun convertToDate(fechaStr: String):Date{
+        val dateFormat = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.getDefault())
+        val fecha = dateFormat.parse(fechaStr)
+        return fecha
+    }
+    private fun cargarProductos(id: Int) {
         if (archivo.exists()) {
             val reader = FileReader(archivo)
             val scanner = Scanner(reader)
@@ -62,15 +94,17 @@ class CRUDProductos( val archivo: File) {
 
             productosArray.forEach { productoString ->
                 val producto = productoString.split(";")
-                val idProducto = producto[0].toInt()
-                val descripcion = producto[1]
-                val fechaDeElaboracion = producto[2]
-                val precio = producto[3].toDouble()
-                val descuento = producto[4].toBoolean()
-
-                productos.add(
-                    Producto(idProducto, descripcion, fechaDeElaboracion, precio, descuento)
-                )
+                if(producto[0].toInt() == id){
+                    val idProducto = producto[1].toInt()
+                    val descripcion = producto[2]
+                    val fechaDeElaboracion = producto[3]
+                    val fechaD:Date = convertToDate(fechaDeElaboracion)
+                    val precio = producto[4].toDouble()
+                    val descuento = producto[5].toBoolean()
+                    productos.add(
+                        Producto(id,idProducto, descripcion, fechaD, precio, descuento)
+                    )
+                }
             }
 
             println("Se han cargado ${productos.size} productos desde el archivo.")

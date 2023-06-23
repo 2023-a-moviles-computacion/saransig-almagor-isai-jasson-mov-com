@@ -9,41 +9,59 @@ class CRUDTienda( val archivo: File) {
         cargarTiendas()
     }
 
-    fun crearTiend(tienda: Tienda) {
+    fun crearTienda(tienda: Tienda) {
         tiendas.add(tienda)
-        guardarProductos()
-        println("La tienda ha sido creado exitosamente.")
+        guardarTiendas()
+        println("Se añadio una nueva tienda")
     }
 
     fun mostrarTiendas() {
         if (tiendas.isEmpty()) {
-            println("No hay productos disponibles.")
+            println("No se tiene tiendas almacenadas")
         } else {
-            println("Lista de productos:")
             tiendas.forEach { println(it) }
         }
     }
 
-    fun actualizarTienda(id: Int, productoActualizado: Tienda) {
-        val productoExistente = tiendas.find { it.idTienda == id }
-        if (productoExistente != null) {
-            tiendas.remove(productoExistente)
-            tiendas.add(productoActualizado)
-            guardarProductos()
-            println("La tienda ha sido actualizado exitosamente.")
-        } else {
-            println("No se encontró ninguna tienda con el ID proporcionado.")
-        }
+
+
+    //----------------------------
+
+    fun tiendaExiste(id: Int): Tienda?{
+        var tienda = tiendas.find { it.idTienda == id }
+        return tienda
     }
 
-    fun eliminarTienda(id: Int) {
-        val tiendaExistente = tiendas.find { it.idTienda== id }
-        if (tiendaExistente != null) {
-            tiendas.remove(tiendaExistente)
-            guardarProductos()
-            println("El producto ha sido eliminado exitosamente.")
+    fun actualizarNombre(tienda:Tienda, newNombre: String){
+        tienda.nombre = newNombre
+        guardarTiendas()
+    }
+
+    fun actualizarDir(tienda:Tienda, newDir: String){
+        tienda.direccion = newDir
+        guardarTiendas()
+    }
+
+    fun actualizarCiudad(tienda:Tienda, newCiudad: String){
+        tienda.ciudad = newCiudad
+        guardarTiendas()
+    }
+    fun actualizarNumEmp(tienda:Tienda, newNumEmp: Int){
+        tienda.numeroEmpleados = newNumEmp
+        guardarTiendas()
+    }
+
+
+    //----------------------------
+
+
+    fun eliminarTienda(tienda: Tienda?) {
+        if (tienda != null) {
+            tiendas.remove(tienda)
+            guardarTiendas()
+            println("Tienda eliminada")
         } else {
-            println("No se encontró ningún producto con el ID proporcionado.")
+            println("No se encontro ninguna tienda con ID proporcionado.")
         }
     }
     private fun cargarTiendas() {
@@ -80,7 +98,7 @@ class CRUDTienda( val archivo: File) {
     }
 
 
-    private fun guardarProductos() {
+    private fun guardarTiendas() {
         val writer = FileWriter(archivo)
         val jsonWriter = PrintWriter(writer)
 
