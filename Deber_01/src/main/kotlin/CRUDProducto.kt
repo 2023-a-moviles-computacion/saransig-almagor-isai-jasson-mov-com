@@ -13,27 +13,14 @@ class CRUDProductos( val archivo: File, val idTienda: Int) {
     fun crearProducto(producto: Producto) {
         productos.add(producto)
         guardarProductos()
-        println("El producto ha sido creado exitosamente.")
+        println("Se añadio un nuevo Producto")
     }
 
     fun mostrarProductos() {
         if (productos.isEmpty()) {
             println("No hay productos disponibles.")
         } else {
-            println("Lista de productos:")
-            productos.forEach { println(it) }
-        }
-    }
-
-    fun actualizarProducto(id: Int, productoActualizado: Producto) {
-        val productoExistente = productos.find { it.idProducto == id }
-        if (productoExistente != null) {
-            productos.remove(productoExistente)
-            productos.add(productoActualizado)
-            guardarProductos()
-            println("El producto ha sido actualizado exitosamente.")
-        } else {
-            println("No se encontró ningún producto con el ID proporcionado.")
+            productos.forEach { println(it)}
         }
     }
 
@@ -67,7 +54,7 @@ class CRUDProductos( val archivo: File, val idTienda: Int) {
         if (productoExistente != null) {
             productos.remove(productoExistente)
             guardarProductos()
-            println("El producto ha sido eliminado exitosamente.")
+            println("El producto se elimino exitosamente.")
         } else {
             println("No se encontró ningún producto con el ID proporcionado.")
         }
@@ -106,10 +93,6 @@ class CRUDProductos( val archivo: File, val idTienda: Int) {
                     )
                 }
             }
-
-            println("Se han cargado ${productos.size} productos desde el archivo.")
-        } else {
-            println("El archivo no existe. No se cargaron productos.")
         }
     }
 
@@ -119,13 +102,10 @@ class CRUDProductos( val archivo: File, val idTienda: Int) {
         val Pwriter = PrintWriter(Fwriter)
 
         productos.forEach { producto ->
-            val productoJson = "${producto.idTienda};${producto.idProducto};${producto.descripcion};${producto.fechaDeElaboracion};${producto.precio};${producto.descuento}"
-            Pwriter.println(productoJson)
+            val productoCsv = "${producto.idTienda};${producto.idProducto};${producto.descripcion};${producto.fechaDeElaboracion};${producto.precio};${producto.descuento}"
+            Pwriter.println(productoCsv)
         }
-
         Pwriter.close()
-
-        println("Los productos se han guardado en el archivo exitosamente.")
     }
 
 }

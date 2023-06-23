@@ -24,10 +24,6 @@ class CRUDTienda( val archivo: File) {
         }
     }
 
-
-
-    //----------------------------
-
     fun tiendaExiste(id: Int): Tienda?{
         var tienda = tiendas.find { it.idTienda == id }
         return tienda
@@ -51,9 +47,6 @@ class CRUDTienda( val archivo: File) {
         tienda.numeroEmpleados = newNumEmp
         guardarTiendas()
     }
-
-
-    //----------------------------
 
 
     fun eliminarTienda(tienda: Tienda?) {
@@ -91,26 +84,19 @@ class CRUDTienda( val archivo: File) {
                     Tienda(idTienda, nombre, direccion, ciudad, numeroEmpleados)
                 )
             }
-
-            println("Se han cargado ${tiendas.size} productos desde el archivo.")
-        } else {
-            println("El archivo no existe. No se cargaron productos.")
         }
     }
 
 
     private fun guardarTiendas() {
-        val writer = FileWriter(archivo)
-        val jsonWriter = PrintWriter(writer)
+        val Fwriter = FileWriter(archivo)
+        val PWriter = PrintWriter(Fwriter)
 
         tiendas.forEach { tienda ->
-            val jsonString = "${tienda.idTienda};${tienda.nombre};${tienda.direccion};${tienda.ciudad};${tienda.numeroEmpleados}"
-            jsonWriter.println(jsonString)
+            val tiendaCsv = "${tienda.idTienda};${tienda.nombre};${tienda.direccion};${tienda.ciudad};${tienda.numeroEmpleados}"
+            PWriter.println(tiendaCsv)
         }
-
-        jsonWriter.close()
-
-        println("Los productos se han guardado en el archivo exitosamente.")
+        PWriter.close()
     }
 
 }
