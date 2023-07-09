@@ -31,7 +31,7 @@
         app:layout_constraintStart_toStartOf="@+id/textView" />
 
     <Button
-        android:id="@+id/bt_list_view"
+        android:id="@+id/btn_ir_list_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
@@ -40,5 +40,24 @@
         app:layout_constraintEnd_toEndOf="@+id/btn_ciclo_vida"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btn_ciclo_vida" />
+
+    <Button
+        android:id="@+id/btn_ir_intent_implicito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I. Implicito"
+        tools:layout_editor_absoluteX="150dp"
+        tools:layout_editor_absoluteY="115dp" />
+
+    <Button
+        android:id="@+id/btn_ir_intent_explicito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="I. Explicito"
+        app:layout_constraintBottom_toTopOf="@+id/btn_ir_intent_implicito"
+        app:layout_constraintEnd_toEndOf="@+id/btn_ir_intent_implicito"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_ir_intent_implicito" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

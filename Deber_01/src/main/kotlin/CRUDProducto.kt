@@ -6,7 +6,9 @@ class CRUDProductos( val archivo: File, val idTienda: Int) {
 
     private var productos: MutableList<Producto> = mutableListOf()
 
+
     init {
+
         cargarProductos(idTienda)
     }
 
@@ -14,6 +16,7 @@ class CRUDProductos( val archivo: File, val idTienda: Int) {
         productos.add(producto)
         guardarProductos()
         println("Se añadio un nuevo Producto")
+
     }
 
     fun mostrarProductos() {
@@ -97,10 +100,9 @@ class CRUDProductos( val archivo: File, val idTienda: Int) {
     }
 
 
-    private fun guardarProductos() {
+    fun guardarProductos() {
         val Fwriter = FileWriter(archivo)
         val Pwriter = PrintWriter(Fwriter)
-
         productos.forEach { producto ->
             val productoCsv = "${producto.idTienda};${producto.idProducto};${producto.descripcion};${producto.fechaDeElaboracion};${producto.precio};${producto.descuento}"
             Pwriter.println(productoCsv)

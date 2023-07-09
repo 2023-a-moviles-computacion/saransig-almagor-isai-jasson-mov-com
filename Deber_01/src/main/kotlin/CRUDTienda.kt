@@ -12,7 +12,6 @@ class CRUDTienda( val archivo: File) {
 
     fun crearTienda(tienda: Tienda) {
         tiendas.add(tienda)
-        guardarTiendas()
         println("Se añadio una nueva tienda")
     }
 
@@ -31,28 +30,23 @@ class CRUDTienda( val archivo: File) {
 
     fun actualizarNombre(tienda:Tienda, newNombre: String){
         tienda.nombre = newNombre
-        guardarTiendas()
     }
 
     fun actualizarDir(tienda:Tienda, newDir: String){
         tienda.direccion = newDir
-        guardarTiendas()
     }
 
     fun actualizarCiudad(tienda:Tienda, newCiudad: String){
         tienda.ciudad = newCiudad
-        guardarTiendas()
     }
     fun actualizarNumEmp(tienda:Tienda, newNumEmp: Int){
         tienda.numeroEmpleados = newNumEmp
-        guardarTiendas()
     }
 
 
     fun eliminarTienda(tienda: Tienda?) {
         if (tienda != null) {
             tiendas.remove(tienda)
-            guardarTiendas()
             println("Tienda eliminada")
         } else {
             println("No se encontro ninguna tienda con ID proporcionado.")
@@ -88,7 +82,7 @@ class CRUDTienda( val archivo: File) {
     }
 
 
-    private fun guardarTiendas() {
+    fun guardarTiendas() {
         val Fwriter = FileWriter(archivo)
         val PWriter = PrintWriter(Fwriter)
 
