@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FormTienda">
+
+    <EditText
+        android:id="@+id/edit_input_nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:ems="10"
+        android:hint="Nombre Tienda"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_input_ciudad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Ciudad"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/edit_input_direccion"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edit_input_direccion"
+        app:layout_constraintTop_toBottomOf="@+id/edit_input_direccion" />
+
+    <EditText
+        android:id="@+id/edit_input_direccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Direccion"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/edit_input_nombre"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edit_input_nombre"
+        app:layout_constraintTop_toBottomOf="@+id/edit_input_nombre" />
+
+    <Button
+        android:id="@+id/edit_btn_guardarTienda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Guardar"
+        app:layout_constraintEnd_toEndOf="@+id/edit_input_numEmpleados"
+        app:layout_constraintStart_toStartOf="@+id/edit_input_numEmpleados"
+        app:layout_constraintTop_toBottomOf="@+id/edit_input_numEmpleados" />
+
+    <Button
+        android:id="@+id/btn_cancelaTienda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Cancelar"
+        app:layout_constraintEnd_toEndOf="@+id/edit_btn_guardarTienda"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="@+id/edit_btn_guardarTienda"
+        app:layout_constraintTop_toBottomOf="@+id/edit_btn_guardarTienda" />
+
+    <EditText
+        android:id="@+id/edit_input_numEmpleados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Número de Empleados"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/edit_input_ciudad"
+        app:layout_constraintStart_toStartOf="@+id/edit_input_ciudad"
+        app:layout_constraintTop_toBottomOf="@+id/edit_input_ciudad" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
