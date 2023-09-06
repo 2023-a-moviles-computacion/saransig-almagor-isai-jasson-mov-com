@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "661059178737",
+    "project_id": "exam02-moviles",
+    "storage_bucket": "exam02-moviles.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661059178737:android:ff86e5756534208721d950",
+        "android_client_info": {
+          "package_name": "com.example.examen02_isaisaransig"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661059178737-os7kgrse23asdsk2mtanks9mrl4a4juv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbJvCSHlc1CmV58MXTvJu6UF0vmeODves"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661059178737-os7kgrse23asdsk2mtanks9mrl4a4juv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
