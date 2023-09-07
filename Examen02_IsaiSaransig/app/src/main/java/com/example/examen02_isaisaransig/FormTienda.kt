@@ -1,4 +1,4 @@
-package com.example.examen01
+package com.example.examen02_isaisaransig
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -31,21 +31,21 @@ class FormTienda : AppCompatActivity() {
                 if(nombre.text.isNotBlank() && direccion.text.isNotBlank() &&
                     ciudad.text.isNotBlank() && numEmpleados.text.isNotBlank()){
 
-                val intentInsert = Intent()
-                intentInsert.putExtra("nombre", nombre.text.toString())
-                intentInsert.putExtra("direccion", direccion.text.toString())
-                intentInsert.putExtra("ciudad", ciudad.text.toString())
-                intentInsert.putExtra("numEmpleados", numEmpleados.text.toString().toInt())
-                setResult(
-                    RESULT_OK,
-                    intentInsert
-                )
+                    val intentInsert = Intent()
+                    intentInsert.putExtra("nombre", nombre.text.toString())
+                    intentInsert.putExtra("direccion", direccion.text.toString())
+                    intentInsert.putExtra("ciudad", ciudad.text.toString())
+                    intentInsert.putExtra("numEmpleados", numEmpleados.text.toString().toInt())
+                    setResult(
+                        RESULT_OK,
+                        intentInsert
+                    )
 
-                val mensaje = "Tienda ingresado correctamente"
-                val duracion = Toast.LENGTH_LONG
-                val toast = Toast.makeText(this, mensaje, duracion)
-                toast.show()
-                finish()
+                    val mensaje = "Tienda ingresado correctamente"
+                    val duracion = Toast.LENGTH_SHORT
+                    val toast = Toast.makeText(this, mensaje, duracion)
+                    toast.show()
+                    finish()
                 }else{
                     val mensaje = "Debe llenar todos los campos"
                     val duracion = Toast.LENGTH_SHORT

@@ -12,7 +12,7 @@ import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 
-private lateinit var tiendasAdapter: ArrayAdapter<Tienda>
+
 class ListTienda : AppCompatActivity() {
     var idItemSeleccionado = 0
     private lateinit var adaptador: ArrayAdapter<Tienda>
@@ -37,6 +37,8 @@ class ListTienda : AppCompatActivity() {
         )
         listView.adapter = adaptador
         adaptador.notifyDataSetChanged()
+
+
         registerForContextMenu(listView)
 
         // Listener para los elementos del ListView
