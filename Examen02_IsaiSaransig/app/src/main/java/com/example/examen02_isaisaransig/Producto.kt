@@ -4,16 +4,13 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class Producto {
-    var idProducto: Int = 0
-    var idTienda: Int = 0
+
     var descripcion: String = ""
     var fechaDeElaboracion: Long = 0
     var precio: Double = 0.0
     var descuento: Int = 0
 
-    constructor(idProducto: Int,idTienda: Int, descripcion: String, fechaElab: Long, precio: Double, descuento: Int){
-        this.idProducto = idProducto
-        this.idTienda = idTienda
+    constructor(descripcion: String, fechaElab: Long, precio: Double, descuento: Int){
         this.descripcion = descripcion
         this.fechaDeElaboracion = fechaElab
         this.precio = precio
@@ -30,8 +27,6 @@ class Producto {
 
     override fun toString(): String {
         return """
-            ID Tienda: ${idTienda}
-            ID Producto: ${idProducto}
             Descripción: ${descripcion}
             Precio: ${precio}
             Descuento: ${descuento}

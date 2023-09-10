@@ -12,10 +12,12 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 
 class ListProducto : AppCompatActivity() {
-    /*
+
     var idItemSeleccionado = 0
+
+
     private lateinit var adaptador: ArrayAdapter<Producto>
-    var idTienda = 0
+    var nombreTienda = ""
 
     var arreglo: ArrayList<Producto> = arrayListOf()
 
@@ -23,33 +25,38 @@ class ListProducto : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_producto)
         arreglo = FirebaseSettings.arregloProductos
-        //Obtener ID Tienda
-        idTienda = intent.getIntExtra("idTienda", 0)
+        //Obtener Nombre Tienda
+        nombreTienda = intent.getStringExtra("nombre").toString()
+
+        //Colocar nombre tienda en la parte superior
         val nameTienda = findViewById<TextView>(R.id.nameTienda)
-        nameTienda.setText(COBaseDatos.coBDatos!!.readTiendaByID(idTienda).nombre)
+        nameTienda.setText(nombreTienda)
 
         //Boton para insertar Producto
+        /*
         val btn_insert_product = findViewById<Button>(R.id.btn_inst_product)
         btn_insert_product
             .setOnClickListener {
                 guardarProducto(FormProducto::class.java)
-            }
+            }*/
 
-        COBaseDatos.coBDatos?.readProductos(idTienda)
+
 
         val listView = findViewById<ListView>(R.id.lv_producto)
         adaptador = ArrayAdapter(
             this, // Contexto
             android.R.layout.simple_list_item_1, // como se va a ver (XML)
-            BDExamen.arregloProductos
+            FirebaseSettings.arregloProductos
         )
         listView.adapter = adaptador
-        adaptador.notifyDataSetChanged()
+
+
+        COFirebase.firebase!!.readProductos(nombreTienda, adaptador)
         registerForContextMenu(listView)
 
 
     }
-
+/*
     private var productoSeleccionado: Producto? = null
 
     override fun onCreateContextMenu(

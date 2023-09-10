@@ -41,6 +41,12 @@ class ListTienda : AppCompatActivity() {
 
         //Menu
         registerForContextMenu(listView)
+
+        // Listener para los elementos del ListView
+        listView.setOnItemClickListener { parent, view, position, id ->
+            val tienda = adaptador.getItem(position)
+            irListProducto(ListProducto::class.java, tienda?.nombre)
+        }
     }
 
     fun guardarTienda(
@@ -125,7 +131,40 @@ class ListTienda : AppCompatActivity() {
         intentExplicito.putExtra("direccion", tiendaSeleccionada?.direccion)
         intentExplicito.putExtra("ciudad", tiendaSeleccionada?.ciudad)
         intentExplicito.putExtra("numEmpleados", tiendaSeleccionada?.numeroEmpleados)
-        //respEditTienda.launch(intentExplicito)
+        respEditTienda.launch(intentExplicito)
+    }
+
+    val respEditTienda =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ){
+                result ->
+            if(result.resultCode == Activity.RESULT_OK){
+                if(result.data != null){
+                    //Logica de Negocio
+                    val nombre = result.data?.getStringExtra("nombre")
+                    val direccion = result.data?.getStringExtra("direccion")
+                    val ciudad = result.data?.getStringExtra("ciudad")
+                    val numEmpleados = result.data?.getIntExtra("numEmpleados", 0)
+                    COFirebase.firebase!!.updateTienda(
+                        nombre,
+                        direccion,
+                        ciudad,
+                        numEmpleados,
+                        adaptador
+                    )
+
+                }
+            }
+        }
+
+    fun irListProducto(
+        clase: Class<*>,
+        nombre: String?
+    ){
+        val intent = Intent(this, clase)
+        intent.putExtra("nombre", nombre)
+        startActivity(intent)
     }
 
 

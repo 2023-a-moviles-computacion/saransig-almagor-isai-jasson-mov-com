@@ -75,5 +75,59 @@ class FirebaseSettings {
 
     }
 
+    fun updateTienda(nombre: String?, direccion: String?, ciudad:String?, numeroEmpleados:Int? ,adaptador: ArrayAdapter<Tienda>){
+
+        val db = Firebase.firestore
+        val datosUpdate = hashMapOf(
+            "nombre" to nombre as Any,
+            "direccion"  to direccion as Any,
+            "ciudad" to ciudad as Any,
+            "numeroEmpleados" to numeroEmpleados as Any
+        )
+        val tiendaRef = db
+            .collection("tienda")
+        tiendaRef
+            .whereEqualTo("nombre", nombre)
+            .get()
+            .addOnSuccessListener {
+                documents ->
+                for (document in documents){
+                    document.reference.update(datosUpdate)
+                        .addOnSuccessListener {
+                            val index = arregloTiendas.indexOfFirst { it.nombre == nombre }
+                            if (index != -1) {
+                                arregloTiendas[index].nombre = nombre
+                                arregloTiendas[index].direccion = direccion
+                                arregloTiendas[index].ciudad = ciudad
+                                arregloTiendas[index].numeroEmpleados = numeroEmpleados
+                                adaptador.notifyDataSetChanged()
+                            }
+
+                        }
+                }
+            }
+
+    }
+
+    //PRODUCTOS
+
+    fun readProductos(tienda:String, adaptador: ArrayAdapter<Producto>){
+        arregloProductos.clear()
+        val db = Firebase.firestore
+        val tiendaRef = db.collection("tienda")
+            tiendaRef
+                .whereEqualTo("nombre", tienda)
+                .get()
+                .addOnSuccessListener {
+                    documents ->
+                    for (document in documents){
+                        var producto = Producto(document.get("descripcion").toString(), document.get("fechaElab").toString().toLong(),
+                        document.get("precio").toString().toDouble(), document.get("descuento").toString().toInt())
+                        arregloProductos.add(producto)
+                    }
+                    adaptador.notifyDataSetChanged()
+                }
+
+    }
 
 }
