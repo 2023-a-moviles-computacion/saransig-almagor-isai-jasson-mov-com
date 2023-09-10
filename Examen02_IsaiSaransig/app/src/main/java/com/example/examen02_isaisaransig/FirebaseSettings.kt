@@ -1,5 +1,6 @@
 package com.example.examen02_isaisaransig
 
+import android.annotation.SuppressLint
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.google.firebase.firestore.ktx.firestore
@@ -111,19 +112,28 @@ class FirebaseSettings {
 
     //PRODUCTOS
 
+    @SuppressLint("SuspiciousIndentation")
     fun readProductos(tienda:String, adaptador: ArrayAdapter<Producto>){
         arregloProductos.clear()
         val db = Firebase.firestore
         val tiendaRef = db.collection("tienda")
-            tiendaRef
-                .whereEqualTo("nombre", tienda)
+            tiendaRef.whereEqualTo("nombre", tienda)
                 .get()
                 .addOnSuccessListener {
                     documents ->
                     for (document in documents){
-                        var producto = Producto(document.get("descripcion").toString(), document.get("fechaElab").toString().toLong(),
-                        document.get("precio").toString().toDouble(), document.get("descuento").toString().toInt())
-                        arregloProductos.add(producto)
+
+                        var productoRef = db.collection("tienda")
+                            .document(document.id)
+                            .collection("productos")
+                        productoRef.get()
+                            .addOnSuccessListener {
+                        productos ->
+                                for (producto in productos){
+                                    var product = Producto(producto.getString("descripcion", producto.getLong()))
+                                    arregloProductos.add(product)
+                                }
+                            }
                     }
                     adaptador.notifyDataSetChanged()
                 }
