@@ -55,7 +55,6 @@ class MensajesAdapter(
         if (mensajeActual.visto) {
             holder.horaTV.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.tertiary))
             holder.notificationIV.visibility = View.VISIBLE
-
         }
     }
 
