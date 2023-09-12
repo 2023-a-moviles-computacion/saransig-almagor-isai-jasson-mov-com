@@ -33,12 +33,12 @@ class ListProducto : AppCompatActivity() {
         nameTienda.setText(nombreTienda)
 
         //Boton para insertar Producto
-        /*
+
         val btn_insert_product = findViewById<Button>(R.id.btn_inst_product)
         btn_insert_product
             .setOnClickListener {
                 guardarProducto(FormProducto::class.java)
-            }*/
+            }
 
 
 
@@ -49,13 +49,41 @@ class ListProducto : AppCompatActivity() {
             FirebaseSettings.arregloProductos
         )
         listView.adapter = adaptador
+        COFirebase.firebase?.readProductos(nombreTienda, adaptador)
 
-
-        COFirebase.firebase!!.readProductos(nombreTienda, adaptador)
         registerForContextMenu(listView)
 
 
     }
+
+    fun guardarProducto(
+        clase: Class <*>
+    ){
+        val intentExplicito = Intent(this, clase)
+        respInsert.launch(intentExplicito)
+    }
+
+    val respInsert =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ){
+                result ->
+            if(result.resultCode == Activity.RESULT_OK){
+                if(result.data != null){
+                    val descripcion = result.data?.getStringExtra("descripcion")
+                    val precio = result.data?.getDoubleExtra("precio", 0.0)
+                    val descuento = result.data?.getIntExtra("descuento", 0)
+                    val fechaElab = result.data?.getLongExtra("fechaElab", 0)
+                    val producto = Producto(descripcion, fechaElab, precio, descuento)
+                    COFirebase.firebase!!.insertProducto(
+                        nombreTienda,
+                        adaptador,
+                        producto
+                    )
+                }
+            }
+        }
+
 /*
     private var productoSeleccionado: Producto? = null
 
@@ -147,34 +175,5 @@ class ListProducto : AppCompatActivity() {
 
 
 
-    fun guardarProducto(
-        clase: Class <*>
-    ){
-        val intentExplicito = Intent(this, clase)
-        respInsert.launch(intentExplicito)
-    }
-
-    val respInsert =
-        registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ){
-                result ->
-            if(result.resultCode == Activity.RESULT_OK){
-                if(result.data != null){
-                    val descripcion = result.data?.getStringExtra("descripcion")
-                    val precio = result.data?.getDoubleExtra("precio", 0.0)
-                    val descuento = result.data?.getIntExtra("descuento", 0)
-                    val fechaElab = result.data?.getLongExtra("fechaElab", 0)
-                    COBaseDatos.coBDatos!!.insertProducto(
-                        idTienda,
-                        descripcion,
-                        precio,
-                        descuento,
-                        fechaElab
-                    )
-                    COBaseDatos.coBDatos!!.readProductos(idTienda)
-                    adaptador.notifyDataSetChanged()
-                }
-            }
-        }*/
+    */
 }

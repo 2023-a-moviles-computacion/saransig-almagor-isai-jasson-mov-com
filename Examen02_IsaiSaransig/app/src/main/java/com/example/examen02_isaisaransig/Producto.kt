@@ -5,23 +5,24 @@ import java.util.*
 
 class Producto {
 
-    var descripcion: String = ""
-    var fechaDeElaboracion: Long = 0
-    var precio: Double = 0.0
-    var descuento: Int = 0
+    var descripcion: String? = ""
+    var fechaDeElaboracion: Long? = 0
+    var precio: Double? = 0.0
+    var descuento: Int? = 0
 
-    constructor(descripcion: String, fechaElab: Long, precio: Double, descuento: Int){
+    constructor(descripcion: String?, fechaElab: Long?, precio: Double?, descuento: Int?){
         this.descripcion = descripcion
         this.fechaDeElaboracion = fechaElab
         this.precio = precio
         this.descuento = descuento
     }
 
+
     constructor(){}
 
-    fun longToString(longDate: Long): String{
+    fun longToString(longDate: Long?): String{
         val formatoFecha = SimpleDateFormat("yyyy-MM-dd")
-        val fechaString = formatoFecha.format(Date(longDate))
+        val fechaString = formatoFecha.format(Date(longDate?:0))
         return fechaString
     }
 
@@ -29,8 +30,8 @@ class Producto {
         return """
             Descripción: ${descripcion}
             Precio: ${precio}
-            Descuento: ${descuento}
-            Fecha de Elaboracion: ${longToString(fechaDeElaboracion)}
+            Fecha: ${longToString(fechaDeElaboracion)}
+            Descuento: ${descuento}            
         """.trimIndent()
     }
 }

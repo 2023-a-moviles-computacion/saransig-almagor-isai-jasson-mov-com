@@ -122,22 +122,51 @@ class FirebaseSettings {
                 .addOnSuccessListener {
                     documents ->
                     for (document in documents){
+                        val productosRef = document.reference.collection("productos")
 
-                        var productoRef = db.collection("tienda")
-                            .document(document.id)
-                            .collection("productos")
-                        productoRef.get()
-                            .addOnSuccessListener {
-                        productos ->
-                                for (producto in productos){
-                                    var product = Producto(producto.getString("descripcion", producto.getLong()))
+                        productosRef.get()
+                            .addOnSuccessListener { productos ->
+                                for (producto in productos) {
+                                    var descripcion = producto.getString("descripcion").toString()
+                                    var fechaDeElaboracion = producto.getLong("fechaDeElaboracion").toString().toLong()
+                                    var precio = producto.getDouble("precio").toString().toDouble()
+                                    var descuento = producto.get("descuento").toString().toInt()
+                                    var product = Producto(descripcion, fechaDeElaboracion, precio, descuento)
                                     arregloProductos.add(product)
                                 }
+                                adaptador.notifyDataSetChanged()
                             }
                     }
-                    adaptador.notifyDataSetChanged()
                 }
-
     }
+
+
+
+    fun insertProducto(tienda:String, adaptador: ArrayAdapter<Producto>, producto: Producto){
+        val db = Firebase.firestore
+        val tiendaRef = db
+            .collection("tienda")
+            .whereEqualTo("nombre", tienda)
+            .get()
+            .addOnSuccessListener{
+                documents ->
+                for (document in documents){
+                    val datosProducto = hashMapOf(
+                        "descripcion" to producto.descripcion,
+                        "fechaDeElaboracion" to producto.fechaDeElaboracion,
+                        "precio" to producto.precio,
+                        "descuento" to producto.descuento
+                    )
+                    document.reference.collection("productos").add(datosProducto)
+                        .addOnSuccessListener {
+                            arregloProductos.add(producto)
+                            adaptador.notifyDataSetChanged()
+                        }
+                }
+            }
+    }
+
+
+
 
 }
