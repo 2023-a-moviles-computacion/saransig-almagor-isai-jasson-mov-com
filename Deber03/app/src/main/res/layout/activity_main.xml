@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    tools:context=".MainActivity">
+
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="60dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/primary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+    <Button
+        android:id="@+id/id_estados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary"
+        android:fontFamily="@font/poppins"
+        android:text="ESTADOS"
+        android:textColor="@color/secundary"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/id_chats"
+        app:layout_constraintTop_toTopOf="@+id/id_chats" />
+
+    <Button
+        android:id="@+id/id_llamadas"
+        android:layout_width="139dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="4dp"
+        android:backgroundTint="@color/primary"
+        android:fontFamily="@font/poppins"
+        android:text="LLAMADAS"
+        android:textColor="@color/secundary"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/id_estados"
+        app:layout_constraintTop_toTopOf="@+id/id_estados" />
+
+    <Button
+        android:id="@+id/id_chats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="CHATS"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintTop_toTopOf="@+id/imageButton" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_mensajes"
+        android:layout_width="409dp"
+        android:layout_height="668dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_estados" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+        app:srcCompat="@drawable/mssicon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
