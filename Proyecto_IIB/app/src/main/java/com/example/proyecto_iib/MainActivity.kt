@@ -6,13 +6,13 @@ import android.os.Bundle
 import android.widget.Button
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        COFirebase.firebase = FirestoreDB()
         crearBD()
         val btn = findViewById<Button>(R.id.button2)
         btn.setOnClickListener {
@@ -22,6 +22,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun puntajeRand(): Int {
+        return Random.nextInt(3, 6) // Genera un número aleatorio entre 3 y 5 (incluidos)
+    }
     fun crearBD(){
         val db = Firebase.firestore
         val numbers = arrayListOf(1,2)
@@ -30,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         val tipos = arrayListOf("camiseta", "saco","pantalones", "buzo","short","blusa","vestido","sudadera")
         val colecciones = arrayListOf("hombre", "mujer")
         val tiendaRef = db.collection("tienda")
-            .whereEqualTo("nombre","Hub Style")
+            .whereEqualTo("nombre","HubStyle")
             .get()
             .addOnSuccessListener {
                 documents ->
@@ -41,13 +44,25 @@ class MainActivity : AppCompatActivity() {
                             for (j in numbers){
                                 i = i +1
                                 c = c+1
+                                var precio = 0.0
+                                when(tipo){
+                                    "camiseta" -> precio = 10.0
+                                    "saco" -> precio = 15.0
+                                    "pantalones" -> precio = 25.0
+                                    "buzo" -> precio = 8.0
+                                    "short" -> precio = 5.0
+                                    "blusa" -> precio = 7.0
+                                    "vestido" -> precio = 19.50
+                                    "sudadera" -> precio = 18.0
+                                }
                                 val datosHombre = hashMapOf(
                                     "coleccion" to coleccion,
                                     "descripcion" to "",
                                     "detalle" to "",
-                                    "imagen" to tipo+i,
-                                    "precio" to 10.0,
-                                    "tipo" to tipo
+                                    "imagen" to "camiseta1",
+                                    "precio" to precio,
+                                    "tipo" to tipo,
+                                    "puntaje" to puntajeRand()
                                 )
                                 document.reference.collection("productos")
                                     .document("00"+c)

@@ -10,8 +10,9 @@ class Ropa {
     var detalle: String? = ""
     var tipo:String? = ""
     var imagen: String? = ""
+    var puntaje: Int? = 0
 
-    constructor(descripcion:String?, precio:Double?, coleccion:String?, tipo:String?, talla:String?, colorRopa: String?, detalle:String?, imagen:String?){
+    constructor(descripcion:String?, precio:Double?, coleccion:String?, tipo:String?, talla:String?, colorRopa: String?, detalle:String?, imagen:String?, puntaje: Int?){
         this.descripcion = descripcion
         this.precio = precio
         this.coleccion = coleccion
@@ -20,12 +21,29 @@ class Ropa {
         this.colorRopa = colorRopa
         this.detalle = detalle
         this.imagen = imagen
+        this.puntaje = puntaje
     }
 
-    constructor(descripcion:String?, precio:Double?, coleccion:String, tipo:String){
-
+    constructor(descripcion:String?, precio:Double?, coleccion:String, tipo:String, imagen:String?){
+        this.descripcion = descripcion
+        this.precio = precio
+        this.coleccion = coleccion
+        this.tipo = tipo
+        this.imagen = imagen
     }
 
     constructor(){}
+
+    override fun toString(): String {
+        return "Producto: $descripcion\n" +
+                "Precio: $precio\n" +
+                "Colección: $coleccion\n" +
+                "Tipo: $tipo\n" +
+                "Talla: $talla\n" +
+                "Color de Ropa: $colorRopa\n" +
+                "Detalle: $detalle\n" +
+                "Imagen: $imagen\n" +
+                "Puntaje: $puntaje"
+    }
 
 }

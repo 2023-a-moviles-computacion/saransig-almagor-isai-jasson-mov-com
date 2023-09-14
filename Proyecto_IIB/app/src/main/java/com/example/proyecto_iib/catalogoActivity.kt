@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import org.imaginativeworld.whynotimagecarousel.ImageCarousel
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem
 
@@ -20,12 +23,28 @@ class catalogoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_catalogo)
+        initCarousel()
+        iniciarRecyclerView()
+    }
+
+    fun iniciarRecyclerView(){
+        val recyclerView =findViewById<RecyclerView>(R.id.rv_destacados)
+
+        val adaptador = ropaAdapter(this,
+            FirestoreDB.arregloDestacados,
+            recyclerView
+        )
+        recyclerView.adapter = adaptador
+        recyclerView.itemAnimator = androidx.recyclerview.widget
+            .DefaultItemAnimator()
+        recyclerView.layoutManager = androidx.recyclerview.widget
+            .LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false )
+        COFirebase.firebase!!.readDestacados("HubStyle", adaptador)
+        adaptador.notifyDataSetChanged()
+    }
 
 
-
-
-
-
+    private fun initCarousel(){
         //Carousel
         list.add(CarouselItem("https://images.hugoboss.com/is/image/hugobosscsprod/230821_HBME_110_BOSS_FW23_Global_Campaign_Matteo_HBexperience_hugobossnewsletter_bott-xvUfWjtEUM?%24large%24&fmt=webp&align=0,-1&fit=crop,1&ts=1692607494490&qlt=80&wid=1280&hei=254"))
         list.add(CarouselItem("https://static.zara.net/photos///contents/mkt/spots/aw23-north-man-coats/subhome-xmedia-37//w/1280/IMAGE-landscape-fill-112d57b1-df32-47fa-a597-d39814310d24-default_0.jpg?ts=1694432200198"))
@@ -33,6 +52,7 @@ class catalogoActivity : AppCompatActivity() {
         list.add(CarouselItem("https://images.hugoboss.com/is/image/hugobosscsprod/230824_BWO_Dresses_1920x880?%24large%24&fmt=webp&align=0,-1&fit=crop,1&ts=1694179375744&qlt=80&wid=1280&hei=586"))
         val carousel: ImageCarousel = findViewById(R.id.carousel)
         carousel.addData(list)
+
         setupArrowAnimation(
             findViewById(R.id.cl_colection_tittle),
             findViewById(R.id.cl_colection),
