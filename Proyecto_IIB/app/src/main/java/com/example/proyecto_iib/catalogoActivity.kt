@@ -23,8 +23,21 @@ class catalogoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_catalogo)
+
         initCarousel()
         iniciarRecyclerView()
+        //coleccion
+        val btn_hombre = findViewById<Button>(R.id.btn_h)
+        val btn_mujer = findViewById<Button>(R.id.btn_m)
+        //tipo
+        val btn_camiseta = findViewById<Button>(R.id.btn_camiseta)
+        val btn_camisa = findViewById<Button>(R.id.btn_camisa)
+        val btn_pantalon = findViewById<Button>(R.id.btn_pantalon)
+        val btn_chaquetas = findViewById<Button>(R.id.btn_chaquetas)
+        val btn_shorts = findViewById<Button>(R.id.btn_shorts)
+        val btn_traje_baño = findViewById<Button>(R.id.btn_traje_baño)
+        val btn_hoodies = findViewById<Button>(R.id.btn_hoodies)
+        val btn_ropa_deportiva = findViewById<Button>(R.id.btn_ropa_deportiva)
     }
 
     fun iniciarRecyclerView(){

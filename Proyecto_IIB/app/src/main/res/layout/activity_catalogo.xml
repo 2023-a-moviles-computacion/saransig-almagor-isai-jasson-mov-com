@@ -230,7 +230,7 @@
 
 
                 <Button
-                    android:id="@+id/btn_h2"
+                    android:id="@+id/btn_camiseta"
                     android:layout_width="140sp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="56dp"
@@ -245,82 +245,82 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/btn_m2"
+                    android:id="@+id/btn_camisa"
                     android:layout_width="140sp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="56dp"
                     android:backgroundTint="@color/white"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Sacos"
+                    android:text="Camisas"
                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/btn_h2" />
+                    app:layout_constraintTop_toTopOf="@+id/btn_camiseta" />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/btn_pantalon"
                     android:layout_width="140sp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:backgroundTint="@color/white"
                     android:text="Pantalones"
                     android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="@+id/btn_h2"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_h2" />
+                    app:layout_constraintStart_toStartOf="@+id/btn_camiseta"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_camiseta" />
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/btn_chaquetas"
                     android:layout_width="140sp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="@color/white"
-                    android:text="Buzos"
+                    android:text="Chaquetas"
                     android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="@+id/btn_m2"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_m2" />
+                    app:layout_constraintStart_toStartOf="@+id/btn_camisa"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_camisa" />
 
                 <Button
-                    android:id="@+id/button5"
+                    android:id="@+id/btn_shorts"
                     android:layout_width="140sp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="@color/white"
                     android:text="shorts"
                     android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="@+id/button3"
-                    app:layout_constraintTop_toBottomOf="@+id/button3" />
+                    app:layout_constraintStart_toStartOf="@+id/btn_pantalon"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_pantalon" />
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/btn_hoodies"
                     android:layout_width="140sp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="@color/white"
-                    android:text="Vestidos"
+                    android:text="hoodies"
                     android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="@+id/button5"
-                    app:layout_constraintTop_toBottomOf="@+id/button5" />
+                    app:layout_constraintStart_toStartOf="@+id/btn_shorts"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_shorts" />
 
                 <Button
-                    android:id="@+id/button7"
+                    android:id="@+id/btn_traje_baño"
                     android:layout_width="140sp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="@color/white"
-                    android:text="Blusas"
+                    android:text="T. baño"
                     android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="@+id/button4"
-                    app:layout_constraintTop_toBottomOf="@+id/button4" />
+                    app:layout_constraintStart_toStartOf="@+id/btn_chaquetas"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_chaquetas" />
 
                 <Button
-                    android:id="@+id/button8"
+                    android:id="@+id/btn_ropa_deportiva"
                     android:layout_width="140sp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="@color/white"
-                    android:text="Sudaderas"
+                    android:text="R. deportiva"
                     android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="@+id/button7"
-                    app:layout_constraintTop_toBottomOf="@+id/button7" />
+                    app:layout_constraintStart_toStartOf="@+id/btn_traje_baño"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_traje_baño" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

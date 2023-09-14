@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun puntajeRand(): Int {
-        return Random.nextInt(3, 6) // Genera un número aleatorio entre 3 y 5 (incluidos)
+        return Random.nextInt(2, 6) // Genera un número aleatorio entre 3 y 5 (incluidos)
     }
     fun crearBD(){
         val db = Firebase.firestore
