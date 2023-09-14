@@ -15,6 +15,13 @@
         android:theme="@style/Theme.Proyecto_IIB"
         tools:targetApi="31">
         <activity
+            android:name=".detalleActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".pedidoAdapter"
             android:exported="false">
             <meta-data
