@@ -8,6 +8,7 @@ import com.google.firebase.ktx.Firebase
 class FirestoreDB {
     companion object{
         var arregloRopa = arrayListOf<Ropa>()
+        var arregloCarrito = arrayListOf<Carrito>()
     }
 
     fun readProductos(tienda:String){

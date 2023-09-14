@@ -28,10 +28,7 @@ class EstadosAdapter(
     }
 
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): EstadosAdapter.MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): EstadosAdapter.MyViewHolder {
         val itemView = LayoutInflater
             .from(parent.context)
             .inflate(
