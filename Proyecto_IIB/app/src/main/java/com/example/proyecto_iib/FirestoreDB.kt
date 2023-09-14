@@ -9,6 +9,7 @@ class FirestoreDB {
     companion object{
         var arregloRopa = arrayListOf<Ropa>()
         var arregloCarrito = arrayListOf<Carrito>()
+        var arregloPedido = arrayListOf<Pedido>()
     }
 
     fun readProductos(tienda:String){

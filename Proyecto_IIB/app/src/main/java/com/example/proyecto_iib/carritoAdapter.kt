@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
 class carritoAdapter(
@@ -17,7 +18,7 @@ class carritoAdapter(
     inner class MyViewHolder(view: View): RecyclerView.ViewHolder(view) {
         var tipo: TextView
         var talla: TextView
-        var color: TextView
+        var color: Button
         var precio: TextView
         var count: TextView
         var imageRopa: ImageView
@@ -26,7 +27,7 @@ class carritoAdapter(
         init {
             tipo = view.findViewById(R.id.tv_tipo_carrito)
             talla = view.findViewById(R.id.tv_talla_carrito)
-            color = view.findViewById(R.id.tv_color_carrito)
+            color = view.findViewById(R.id.color_carrito)
             precio = view.findViewById(R.id.tv_precio_carrito)
             count = view.findViewById(R.id.tv_count_carrito)
             imageRopa = view.findViewById(R.id.img_ropa_carrito)
@@ -71,6 +72,17 @@ class carritoAdapter(
             }
 
         }
+
+        //Color
+        var color_fondo = carritoActual.ropa!!.colorRopa
+        when (color_fondo) {
+            "celeste" -> holder.color.backgroundTintList = ContextCompat.getColorStateList(contexto, R.color.celeste)
+            "verde" -> holder.color.backgroundTintList = ContextCompat.getColorStateList(contexto, R.color.verde)
+            "rojo" -> holder.color.backgroundTintList = ContextCompat.getColorStateList(contexto, R.color.rojo)
+            "crema" -> holder.color.backgroundTintList = ContextCompat.getColorStateList(contexto, R.color.crema)
+        }
+
+
     }
 
     override fun getItemCount(): Int {

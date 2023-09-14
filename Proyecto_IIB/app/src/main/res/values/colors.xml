@@ -10,4 +10,8 @@
     <color name="green">#015D53</color>
     <color name="green_secundary">#BFD6D4</color>
     <color name="orange">#A83400</color>
+    <color name="celeste">#9BD0D0</color>
+    <color name="verde">#91E451</color>
+    <color name="rojo">#D38888</color>
+    <color name="crema">#CFC8B8</color>
 </resources>
