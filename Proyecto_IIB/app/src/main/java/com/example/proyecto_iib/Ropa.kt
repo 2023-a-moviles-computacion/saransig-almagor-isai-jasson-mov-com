@@ -5,13 +5,19 @@ class Ropa {
     var descripcion: String? = ""
     var precio: Double? = 0.0
     var coleccion: String? = ""
+    var talla: String? = ""
+    var colorRopa: String? = ""
+    var detalle: String? = ""
     var tipo:String? = ""
 
-    constructor(descripcion:String?, precio:Double?, coleccion:String?, tipo:String?){
+    constructor(descripcion:String?, precio:Double?, coleccion:String?, tipo:String?, talla:String?, colorRopa: String?, detalle:String?){
         this.descripcion = descripcion
         this.precio = precio
         this.coleccion = coleccion
         this.tipo = tipo
+        this.talla = talla
+        this.colorRopa = colorRopa
+        this.detalle = detalle
     }
 
     constructor(){}

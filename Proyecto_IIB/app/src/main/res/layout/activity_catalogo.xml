@@ -63,7 +63,6 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="S    T    Y    L    E"
                 android:textColor="#121111"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textView2"
                 app:layout_constraintStart_toStartOf="@+id/textView2"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -74,10 +73,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/poppins"
+            android:fontFamily="@font/poppins_medium"
             android:text="Destacados"
             android:textColor="#000000"
-            android:textSize="17sp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/carousel" />
@@ -330,11 +329,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="70sp"
+            android:layout_height="73sp"
             android:background="@color/green_secundary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/menu" >
+            app:layout_constraintTop_toBottomOf="@+id/menu">
 
             <ImageButton
                 android:id="@+id/imageButton7"
