@@ -24,7 +24,8 @@ class Ropa {
         this.puntaje = puntaje
     }
 
-    constructor(descripcion:String?, precio:Double?, coleccion:String, tipo:String, imagen:String?){
+    constructor(codigo: String?, descripcion:String?, precio:Double?, coleccion:String, tipo:String, imagen:String?){
+        this.codigo = codigo
         this.descripcion = descripcion
         this.precio = precio
         this.coleccion = coleccion

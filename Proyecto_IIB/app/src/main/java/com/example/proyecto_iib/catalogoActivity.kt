@@ -1,11 +1,12 @@
 package com.example.proyecto_iib
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,23 +27,45 @@ class catalogoActivity : AppCompatActivity() {
 
         initCarousel()
         iniciarRecyclerView()
+
+        //menu
+
+
         //coleccion
         val btn_hombre = findViewById<Button>(R.id.btn_h)
+        btn_hombre.setOnClickListener {
+            irActividad(coleccionActivity::class.java, "hombre")
+        }
+
         val btn_mujer = findViewById<Button>(R.id.btn_m)
+        btn_mujer.setOnClickListener {
+                irActividad(coleccionActivity::class.java, "mujer")
+            }
         //tipo
         val btn_camiseta = findViewById<Button>(R.id.btn_camiseta)
-        val btn_camisa = findViewById<Button>(R.id.btn_camisa)
+        btn_camiseta.setOnClickListener {
+                irActividad(tipoActivity::class.java, "camiseta")
+            }
+
         val btn_pantalon = findViewById<Button>(R.id.btn_pantalon)
+        btn_pantalon.setOnClickListener {
+            irActividad(tipoActivity::class.java, "pantalon")
+        }
         val btn_chaquetas = findViewById<Button>(R.id.btn_chaquetas)
-        val btn_shorts = findViewById<Button>(R.id.btn_shorts)
-        val btn_traje_baño = findViewById<Button>(R.id.btn_traje_baño)
+        btn_chaquetas.setOnClickListener {
+            irActividad(tipoActivity::class.java, "chaqueta")
+        }
+
         val btn_hoodies = findViewById<Button>(R.id.btn_hoodies)
-        val btn_ropa_deportiva = findViewById<Button>(R.id.btn_ropa_deportiva)
+        btn_hoodies.setOnClickListener {
+            irActividad(tipoActivity::class.java, "hoodie")
+        }
+
     }
 
     fun iniciarRecyclerView(){
         val recyclerView =findViewById<RecyclerView>(R.id.rv_destacados)
-
+        FirestoreDB.arregloDestacados.clear()
         val adaptador = ropaAdapter(this,
             FirestoreDB.arregloDestacados,
             recyclerView
@@ -93,5 +116,17 @@ class catalogoActivity : AppCompatActivity() {
                 btn_row.setImageResource(R.drawable.ic_arrow_down)
             }
         }
+    }
+
+
+    fun irActividad(
+        clase: Class<*>,
+        nombre: String?
+    ){
+        val intent = Intent(this, clase)
+        intent.putExtra("nombre", nombre)
+        startActivity(intent)
+        overridePendingTransition(0, 0);
+        finish()
     }
 }

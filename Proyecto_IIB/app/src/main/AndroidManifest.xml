@@ -15,6 +15,13 @@
         android:theme="@style/Theme.Proyecto_IIB"
         tools:targetApi="31">
         <activity
+            android:name=".tipoActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".coleccionActivity"
             android:exported="false">
             <meta-data

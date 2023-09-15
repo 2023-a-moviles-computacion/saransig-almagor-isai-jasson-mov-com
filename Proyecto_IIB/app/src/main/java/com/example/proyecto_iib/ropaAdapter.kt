@@ -1,6 +1,7 @@
 package com.example.proyecto_iib
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -25,6 +26,7 @@ class ropaAdapter(
             tipo = view.findViewById(R.id.tv_tipo_adapter)
             precio = view.findViewById(R.id.tv_price_adapter)
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ropaAdapter.MyViewHolder {
@@ -44,12 +46,22 @@ class ropaAdapter(
         holder.precio.text = ropaActual.precio.toString()
 
         val imageResource = holder.itemView.context.resources.getIdentifier(
-            "camiseta1",
+            ropaActual.imagen,
             "drawable",
             holder.itemView.context.packageName
         )
+
         holder.ropaImg.setImageResource(imageResource)
+        holder.ropaImg.setOnClickListener{
+            val intent = Intent(contexto, detalleActivity::class.java)
+            intent.putExtra("codigo", ropaActual.codigo)
+            contexto.startActivity(intent)
+
+            // Cierra la actividad actual
+            (contexto as AppCompatActivity).finish()
+        }
     }
+
 
     override fun getItemCount(): Int {
         return this.lista.size

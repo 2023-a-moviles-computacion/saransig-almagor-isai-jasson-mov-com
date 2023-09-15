@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".detalleActivity">
 
     <FrameLayout
@@ -55,13 +56,13 @@
         android:layout_width="match_parent"
         android:layout_height="73sp"
         android:background="@color/green_secundary"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:id="@+id/imageButton7"
+            android:id="@+id/ibtn_catalogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -71,27 +72,27 @@
             app:srcCompat="@drawable/ic_home" />
 
         <ImageButton
-            android:id="@+id/imageButton8"
+            android:id="@+id/ibtn_pedidos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:backgroundTint="@color/green_secundary"
-            app:layout_constraintStart_toEndOf="@+id/imageButton7"
+            app:layout_constraintStart_toEndOf="@+id/ibtn_catalogo"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_pedidos" />
 
         <ImageButton
-            android:id="@+id/imageButton9"
+            android:id="@+id/ibtn_carrito"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="30dp"
             android:backgroundTint="@color/green_secundary"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton10"
+            app:layout_constraintEnd_toStartOf="@+id/ibtn_cuenta"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_shopping_cart" />
 
         <ImageButton
-            android:id="@+id/imageButton10"
+            android:id="@+id/ibtn_cuenta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="30dp"
@@ -109,8 +110,8 @@
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/imageButton7"
-            app:layout_constraintStart_toStartOf="@+id/imageButton7" />
+            app:layout_constraintEnd_toEndOf="@+id/ibtn_catalogo"
+            app:layout_constraintStart_toStartOf="@+id/ibtn_catalogo" />
 
         <TextView
             android:id="@+id/textView6"
@@ -121,8 +122,8 @@
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/imageButton8"
-            app:layout_constraintStart_toStartOf="@+id/imageButton8" />
+            app:layout_constraintEnd_toEndOf="@+id/ibtn_pedidos"
+            app:layout_constraintStart_toStartOf="@+id/ibtn_pedidos" />
 
         <TextView
             android:id="@+id/textView7"
@@ -133,8 +134,8 @@
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/imageButton9"
-            app:layout_constraintStart_toStartOf="@+id/imageButton9" />
+            app:layout_constraintEnd_toEndOf="@+id/ibtn_carrito"
+            app:layout_constraintStart_toStartOf="@+id/ibtn_carrito" />
 
         <TextView
             android:id="@+id/textView8"
@@ -145,8 +146,8 @@
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/imageButton10"
-            app:layout_constraintStart_toStartOf="@+id/imageButton10" />
+            app:layout_constraintEnd_toEndOf="@+id/ibtn_cuenta"
+            app:layout_constraintStart_toStartOf="@+id/ibtn_cuenta" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
