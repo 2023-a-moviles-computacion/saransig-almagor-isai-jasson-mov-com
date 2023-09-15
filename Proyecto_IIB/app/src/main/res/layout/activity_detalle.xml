@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/montserrat_bold"
-            android:text="CATÁLOGO"
+            android:text="DETALLE"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
     </FrameLayout>
@@ -178,6 +178,7 @@
         android:layout_width="30sp"
         android:layout_height="40sp"
         android:layout_marginTop="10dp"
+        android:backgroundTint="@color/celeste"
         app:layout_constraintStart_toStartOf="@+id/textView15"
         app:layout_constraintTop_toBottomOf="@+id/textView15"
         app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
@@ -187,6 +188,7 @@
         android:layout_width="30sp"
         android:layout_height="40sp"
         android:layout_marginStart="20dp"
+        android:backgroundTint="@color/rojo"
         app:layout_constraintStart_toEndOf="@+id/color_celeste"
         app:layout_constraintTop_toTopOf="@+id/color_celeste"
         app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
@@ -196,6 +198,7 @@
         android:layout_width="30sp"
         android:layout_height="40sp"
         android:layout_marginStart="20dp"
+        android:backgroundTint="@color/verde"
         app:layout_constraintStart_toEndOf="@+id/color_verde"
         app:layout_constraintTop_toTopOf="@+id/color_verde"
         app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
@@ -205,6 +208,7 @@
         android:layout_width="30sp"
         android:layout_height="40sp"
         android:layout_marginStart="20dp"
+        android:backgroundTint="@color/crema"
         app:layout_constraintStart_toEndOf="@+id/color_rojo"
         app:layout_constraintTop_toTopOf="@+id/color_rojo"
         app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
