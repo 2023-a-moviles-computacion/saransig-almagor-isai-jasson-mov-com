@@ -306,7 +306,9 @@ class FirestoreDB {
                                 val coleccion = productoSnapshot.getString("coleccion").toString()
                                 val tipo = productoSnapshot.getString("tipo").toString()
                                 val imagen = productoSnapshot.getString("imagen").toString()
+                                val detalle = productoSnapshot.getString("detalle").toString()
                                 val producto = Ropa(codigo, descripcion, precio, coleccion, tipo, imagen)
+                                producto.detalle = detalle
                                 callback.onRopaObtenida(producto) // Llama al callback con el producto
                             }
                         }

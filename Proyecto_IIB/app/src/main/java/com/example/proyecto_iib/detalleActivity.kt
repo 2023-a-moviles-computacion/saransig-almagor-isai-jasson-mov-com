@@ -28,7 +28,7 @@ class detalleActivity : AppCompatActivity() {
 
                 tipo_detalle.text = ropa.tipo
                 precio.text = ropa.precio.toString()
-                detalle.text = ropa.detalle
+                detalle.text = ropa.detalle.toString()
                 val imagenResourceId = resources.getIdentifier(ropa.imagen, "drawable", packageName)
 
                 if (imagenResourceId != 0) {

@@ -10,11 +10,22 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="156dp"
-        android:text="Button"
+        android:layout_marginTop="536dp"
+        android:backgroundTint="@color/orange"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Iniciar"
+        android:textColor="@color/white"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="861dp"
+        android:layout_height="1008dp"
+        app:srcCompat="@drawable/fondo"
+        tools:layout_editor_absoluteX="-222dp"
+        tools:layout_editor_absoluteY="-202dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
